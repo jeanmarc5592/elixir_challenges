@@ -228,4 +228,54 @@ defmodule ElixirChallengesTest do
       assert ElixirChallenges.longest_word("") == nil
     end
   end
+
+  describe "count_vowels/1" do
+    test "counts vowels in lowercase string" do
+      assert ElixirChallenges.count_vowels("elixir") == 3
+    end
+
+    test "counts vowels in mixed case string" do
+      assert ElixirChallenges.count_vowels("AEIOUxyz") == 5
+    end
+
+    test "no vowels" do
+      assert ElixirChallenges.count_vowels("bcdfg") == 0
+    end
+
+    test "empty string" do
+      assert ElixirChallenges.count_vowels("") == 0
+    end
+  end
+
+  describe "merge_sorted/2" do
+    test "merge two sorted lists" do
+      assert ElixirChallenges.merge_sorted([1, 3, 5], [2, 4, 6]) == [1, 2, 3, 4, 5, 6]
+    end
+
+    test "merge with empty list" do
+      assert ElixirChallenges.merge_sorted([], [1, 2]) == [1, 2]
+      assert ElixirChallenges.merge_sorted([3, 4], []) == [3, 4]
+    end
+
+    test "merge both empty lists" do
+      assert ElixirChallenges.merge_sorted([], []) == []
+    end
+  end
+
+  describe "group_by_length/1" do
+    test "groups words by their lengths" do
+      input = ["hi", "there", "to", "go"]
+      result = ElixirChallenges.group_by_length(input)
+      assert result == %{2 => ["hi", "to", "go"], 5 => ["there"]}
+    end
+
+    test "handles empty list" do
+      assert ElixirChallenges.group_by_length([]) == %{}
+    end
+
+    test "handles words with same length" do
+      input = ["a", "b", "c"]
+      assert ElixirChallenges.group_by_length(input) == %{1 => ["a", "b", "c"]}
+    end
+  end
 end

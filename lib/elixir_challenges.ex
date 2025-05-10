@@ -213,4 +213,34 @@ defmodule ElixirChallenges do
     |> String.split()
     |> Enum.max_by(fn word -> String.length(word) end)
   end
+
+  def count_vowels(""), do: 0
+
+  def count_vowels(input) do
+    vowels = ["a", "e", "i", "o", "u"]
+
+    input
+    |> String.downcase()
+    |> String.graphemes()
+    |> Enum.reduce(0, fn char, acc ->
+      case Enum.find(vowels, nil, fn x -> x == char end) do
+        nil -> acc
+        _ -> acc + 1
+      end
+    end)
+  end
+
+  def merge_sorted(list_one, list_two) do
+    Enum.sort(list_one ++ list_two)
+  end
+
+  def group_by_length([]), do: %{}
+
+  def group_by_length(list) do
+    Enum.reduce(list, %{}, fn word, acc ->
+      Map.update(acc, String.length(word), [word], fn existing_value ->
+        existing_value ++ [word]
+      end)
+    end)
+  end
 end

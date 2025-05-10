@@ -190,6 +190,39 @@ Find the longest word in a sentence.
 
 ---
 
+### `count_vowels/1`
+
+Count the number of vowels (`a, e, i, o, u`) in a given string. Case-insensitive.
+
+**Examples:**
+- `count_vowels("elixir") #=> 3`
+- `count_vowels("AEIOUxyz") #=> 5`
+- `count_vowels("bcdfg") #=> 0`
+- `count_vowels("") #=> 0`
+
+---
+
+### `merge_sorted/2`
+
+Merge two sorted lists into a single sorted list without using `Enum.sort/1`.
+
+**Examples:**
+- `merge_sorted([1, 3, 5], [2, 4, 6]) #=> [1, 2, 3, 4, 5, 6]`
+- `merge_sorted([], [1, 2]) #=> [1, 2]`
+- `merge_sorted([3, 4], []) #=> [3, 4]`
+- `merge_sorted([], []) #=> []`
+
+---
+
+### `group_by_length/1`
+
+Group words by their length into a map. The keys are lengths and values are lists of words.
+
+**Examples:**
+- `group_by_length(["hi", "there", "to", "go"]) #=> %{2 => ["hi", "to", "go"], 5 => ["there"]}`
+- `group_by_length(["a", "b", "c"]) #=> %{1 => ["a", "b", "c"]}`
+- `group_by_length([]) #=> %{}`
+
 ## Running Tests
 
 To run all tests:
