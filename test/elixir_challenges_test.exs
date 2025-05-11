@@ -278,4 +278,85 @@ defmodule ElixirChallengesTest do
       assert ElixirChallenges.group_by_length(input) == %{1 => ["a", "b", "c"]}
     end
   end
+
+  describe "transpose/1" do
+    test "transpose 2x2 matrix" do
+      assert ElixirChallenges.transpose([[1, 2], [3, 4]]) == [[1, 3], [2, 4]]
+    end
+
+    test "transpose 2x3 matrix" do
+      assert ElixirChallenges.transpose([[1, 2, 3], [4, 5, 6]]) == [[1, 4], [2, 5], [3, 6]]
+    end
+
+    test "transpose 1xN and Nx1" do
+      assert ElixirChallenges.transpose([[1, 2, 3]]) == [[1], [2], [3]]
+      assert ElixirChallenges.transpose([[1], [2], [3]]) == [[1, 2, 3]]
+    end
+  end
+
+  describe "even?/1" do
+    test "even numbers" do
+      assert ElixirChallenges.even?(4) == true
+      assert ElixirChallenges.even?(0) == true
+    end
+
+    test "odd numbers" do
+      assert ElixirChallenges.even?(7) == false
+      assert ElixirChallenges.even?(-3) == false
+    end
+  end
+
+  describe "dot_product/2" do
+    test "dot product of two 3-element lists" do
+      assert ElixirChallenges.dot_product([1, 2, 3], [4, 5, 6]) == 32
+    end
+
+    test "dot product with zeros" do
+      assert ElixirChallenges.dot_product([0, 0], [1, 2]) == 0
+    end
+
+    test "empty lists" do
+      assert ElixirChallenges.dot_product([], []) == 0
+    end
+  end
+
+  describe "title_case/1" do
+    test "basic title case" do
+      assert ElixirChallenges.title_case("hello world") == "Hello World"
+    end
+
+    test "already capitalized" do
+      assert ElixirChallenges.title_case("Elixir Is Fun") == "Elixir Is Fun"
+    end
+
+    test "mixed case and extra spaces" do
+      assert ElixirChallenges.title_case("eLiXiR  is   AwEsoMe") == "Elixir Is Awesome"
+    end
+
+    test "empty string" do
+      assert ElixirChallenges.title_case("") == ""
+    end
+  end
+
+  describe "rotate_left/2" do
+    test "rotate by 2 positions" do
+      assert ElixirChallenges.rotate_left([1, 2, 3, 4, 5], 2) == [3, 4, 5, 1, 2]
+    end
+
+    test "rotate by length" do
+      assert ElixirChallenges.rotate_left([1, 2, 3], 3) == [1, 2, 3]
+    end
+
+    test "rotate by more than length (wrap around)" do
+      assert ElixirChallenges.rotate_left([1, 2], 5) == [2, 1]
+    end
+
+    test "empty list" do
+      assert ElixirChallenges.rotate_left([], 3) == []
+    end
+
+    test "rotate by 0" do
+      assert ElixirChallenges.rotate_left([1, 2, 3], 0) == [1, 2, 3]
+    end
+  end
 end

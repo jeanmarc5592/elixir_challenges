@@ -243,4 +243,49 @@ defmodule ElixirChallenges do
       end)
     end)
   end
+
+  def transpose(matrix) do
+    original_columns = Enum.count(List.first(matrix))
+
+    Enum.map(0..(original_columns - 1), fn x ->
+      Enum.map(matrix, fn row -> Enum.at(row, x) end)
+    end)
+  end
+
+  def even?(number) do
+    rem(number, 2) == 0
+  end
+
+  def dot_product([], []), do: 0
+
+  def dot_product(list_one, list_two) do
+    Enum.zip(list_one, list_two)
+    |> Enum.reduce(0, fn {a, b}, acc -> acc + a * b end)
+  end
+
+  def title_case(string) do
+    string
+    |> String.downcase()
+    |> String.split()
+    |> Enum.map(fn word ->
+      first_character = String.first(word)
+      rest_of_word = String.slice(word, 1..-1//1)
+
+      String.upcase(first_character) <> rest_of_word
+    end)
+    |> Enum.join(" ")
+  end
+
+  def rotate_left(list, steps) do
+    list
+    |> Enum.with_index()
+    |> Enum.map(fn {_item, index} ->
+      next_index = index + steps
+
+      case next_index > length(list) - 1 do
+        true -> Enum.at(list, next_index - length(list))
+        false -> Enum.at(list, next_index)
+      end
+    end)
+  end
 end

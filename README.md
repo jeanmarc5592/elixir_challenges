@@ -223,6 +223,66 @@ Group words by their length into a map. The keys are lengths and values are list
 - `group_by_length(["a", "b", "c"]) #=> %{1 => ["a", "b", "c"]}`
 - `group_by_length([]) #=> %{}`
 
+---
+
+### `transpose/1`
+
+Transpose a list of lists (matrix). Converts rows to columns and vice versa.
+
+**Examples:**
+- `transpose([[1, 2], [3, 4]]) #=> [[1, 3], [2, 4]]`
+- `transpose([[1, 2, 3], [4, 5, 6]]) #=> [[1, 4], [2, 5], [3, 6]]`
+- `transpose([[1, 2, 3]]) #=> [[1], [2], [3]]`
+- `transpose([[1], [2], [3]]) #=> [[1, 2, 3]]`
+
+---
+
+### `even?/1`
+
+Return `true` if an integer is even, otherwise `false`.
+
+**Examples:**
+- `even?(4) #=> true`
+- `even?(0) #=> true`
+- `even?(7) #=> false`
+- `even?(-3) #=> false`
+
+---
+
+### `dot_product/2`
+
+Compute the dot product of two equal-length lists of numbers.
+
+**Examples:**
+- `dot_product([1, 2, 3], [4, 5, 6]) #=> 32`
+- `dot_product([0, 0], [1, 2]) #=> 0`
+- `dot_product([], []) #=> 0`
+
+---
+
+### `title_case/1`
+
+Capitalize the first letter of each word in a string.
+
+**Examples:**
+- `title_case("hello world") #=> "Hello World"`
+- `title_case("eLiXiR  is   AwEsoMe") #=> "Elixir Is Awesome"`
+- `title_case("") #=> ""`
+
+---
+
+### `rotate_left/2`
+
+Rotate a list to the left by `n` positions. Wraps around if `n` exceeds the list length.
+
+**Examples:**
+- `rotate_left([1, 2, 3, 4, 5], 2) #=> [3, 4, 5, 1, 2]`
+- `rotate_left([1, 2], 5) #=> [2, 1]`
+- `rotate_left([], 3) #=> []`
+- `rotate_left([1, 2, 3], 0) #=> [1, 2, 3]`
+
+---
+
 ## Running Tests
 
 To run all tests:
