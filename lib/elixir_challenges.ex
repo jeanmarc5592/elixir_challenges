@@ -288,4 +288,24 @@ defmodule ElixirChallenges do
       end
     end)
   end
+
+  def most_frequent(list) do
+    {most_frequent, _} =
+      list
+      |> Enum.reduce(%{}, fn x, acc ->
+        Map.update(acc, x, 1, fn existing_value -> existing_value + 1 end)
+      end)
+      |> Enum.max_by(fn {_key, value} -> value end)
+
+    most_frequent
+  end
+
+  def range_sum(first, last) do
+    min = min(first, last)
+    max = max(first, last)
+
+    Enum.reduce(min..max, 0, fn x, acc -> acc + x end)
+
+    {min, max}
+  end
 end

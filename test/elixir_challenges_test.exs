@@ -359,4 +359,37 @@ defmodule ElixirChallengesTest do
       assert ElixirChallenges.rotate_left([1, 2, 3], 0) == [1, 2, 3]
     end
   end
+
+  describe "most_frequent/1" do
+    test "returns most frequent number" do
+      assert ElixirChallenges.most_frequent([1, 2, 2, 3]) == 2
+    end
+
+    test "returns most frequent string" do
+      assert ElixirChallenges.most_frequent(["a", "b", "a", "c", "b", "a"]) == "a"
+    end
+
+    test "tie between elements" do
+      result = ElixirChallenges.most_frequent([:x, :y, :x, :y])
+      assert result in [:x, :y]
+    end
+
+    test "empty list returns nil" do
+      assert ElixirChallenges.most_frequent([]) == nil
+    end
+  end
+
+  describe "range_sum/2" do
+    test "ascending range" do
+      assert ElixirChallenges.range_sum(1, 5) == 15
+    end
+
+    test "descending range" do
+      assert ElixirChallenges.range_sum(5, 1) == 15
+    end
+
+    test "single value range" do
+      assert ElixirChallenges.range_sum(3, 3) == 3
+    end
+  end
 end

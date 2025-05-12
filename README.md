@@ -283,6 +283,28 @@ Rotate a list to the left by `n` positions. Wraps around if `n` exceeds the list
 
 ---
 
+### `most_frequent/1`
+
+Return the most frequent element in a list. If there's a tie, any one of the most frequent values may be returned. Do **NOT** use `Enum.frequencies/1`.
+
+**Examples:**
+- `most_frequent([1, 2, 2, 3]) #=> 2`
+- `most_frequent(["a", "b", "a", "c", "b", "a"]) #=> "a"`
+- `most_frequent([]) #=> nil`
+
+---
+
+### `range_sum/2`
+
+Return the sum of all integers between `a` and `b` (inclusive), regardless of order.
+
+**Examples:**
+- `range_sum(1, 5) #=> 15`
+- `range_sum(5, 1) #=> 15`
+- `range_sum(3, 3) #=> 3`
+
+---
+
 ## Running Tests
 
 To run all tests:
